@@ -1,0 +1,961 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raditya Prakoso — Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #294cff;
+  --yellow: #f5ff00;
+  --pink: #ff83d0;
+  --black: #111126;
+  --white: #fffdf3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--blue);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* RUNNING TEXT */
+
+.topbar {
+  background: var(--yellow);
+  color: var(--black);
+  border-bottom: 3px solid var(--black);
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* NAVIGATION */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6%;
+  background: var(--white);
+  color: var(--black);
+  border-bottom: 3px solid var(--black);
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+nav {
+  display: flex;
+  gap: 12px;
+}
+
+nav a {
+  border: 2px solid var(--black);
+  border-radius: 30px;
+  padding: 9px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+nav a:hover {
+  background: var(--pink);
+  transform: rotate(-3deg);
+}
+
+.menu {
+  display: none;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  padding: 9px;
+  font-weight: bold;
+}
+
+/* HERO + WINDOWS XP WALLPAPER */
+
+.hero {
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* Langit biru Windows XP */
+  background:
+    radial-gradient(ellipse at 20% 15%,
+      rgba(255,255,255,.9), transparent 28%),
+    radial-gradient(ellipse at 80% 25%,
+      rgba(255,255,255,.7), transparent 20%),
+    linear-gradient(
+      to bottom,
+      #9fcaff 0%,
+      #558cff 48%,
+      #d7f0ff 66%,
+      #6fba42 67%,
+      #328a20 100%
+    );
+}
+
+/* Awan */
+
+.cloud {
+  position: absolute;
+  width: 180px;
+  height: 45px;
+  background: rgba(255,255,255,.8);
+  border-radius: 50%;
+  filter: blur(9px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 90px;
+  height: 70px;
+  left: 30px;
+  bottom: 0;
+}
+
+.cloud::after {
+  width: 100px;
+  height: 65px;
+  right: 20px;
+  bottom: 0;
+}
+
+.cloud-one {
+  top: 24%;
+  left: 10%;
+}
+
+.cloud-two {
+  top: 35%;
+  right: 12%;
+  transform: scale(.7);
+}
+
+/* Bukit hijau */
+
+.hill {
+  position: absolute;
+  width: 120%;
+  height: 180px;
+  bottom: -80px;
+  left: -10%;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(#64b82f, #287b18);
+}
+
+.hill-two {
+  bottom: -120px;
+  left: 20%;
+  background: linear-gradient(#3e9d24, #1e6819);
+  transform: rotate(-5deg);
+}
+
+.hero-label {
+  width: fit-content;
+  padding: 9px 12px;
+  background: var(--yellow);
+  color: var(--black);
+  border: 2px solid var(--black);
+  font: 11px "DM Mono", monospace;
+  box-shadow: 4px 4px var(--black);
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(65px, 13vw, 165px);
+  line-height: .8;
+  letter-spacing: -.09em;
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--black);
+  text-shadow: 6px 7px var(--black);
+  margin: 70px 0;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--white);
+  margin-top: 18px;
+}
+
+.sticker {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 4px 5px var(--black);
+}
+
+.sticker-one {
+  width: 100px;
+  height: 100px;
+  right: 12%;
+  top: 15%;
+  background: var(--pink);
+  transform: rotate(10deg);
+}
+
+.sticker-two {
+  width: 85px;
+  height: 85px;
+  right: 7%;
+  bottom: 23%;
+  background: var(--yellow);
+  transform: rotate(-12deg);
+}
+
+.star {
+  position: absolute;
+  z-index: 2;
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--black);
+  font-size: 55px;
+}
+
+.star-one {
+  top: 42%;
+  left: 4%;
+}
+
+.star-two {
+  right: 28%;
+  bottom: 8%;
+}
+
+.hero-bottom {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  color: var(--black);
+}
+
+.hero-bottom p {
+  font: 12px/1.8 "DM Mono", monospace;
+  background: var(--white);
+  border: 2px solid var(--black);
+  padding: 10px;
+  box-shadow: 4px 4px var(--black);
+}
+
+.scroll {
+  display: grid;
+  place-items: center;
+  width: 85px;
+  height: 85px;
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  background: var(--pink);
+  color: var(--black);
+  font-size: 28px;
+  box-shadow: 4px 5px var(--black);
+  transition: .2s;
+}
+
+.scroll:hover {
+  transform: rotate(-12deg);
+  background: var(--yellow);
+}
+
+/* ABOUT */
+
+section.content {
+  padding: 65px 7%;
+}
+
+.about {
+  background: var(--yellow);
+  color: var(--black);
+  border-top: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+}
+
+.section-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid currentColor;
+  font: 10px "DM Mono", monospace;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  gap: 8%;
+  padding-top: 50px;
+}
+
+.about h2 {
+  font-size: clamp(45px, 7vw, 90px);
+  line-height: .9;
+  letter-spacing: -.08em;
+}
+
+.about h2 span {
+  color: var(--blue);
+}
+
+.about-text h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.skills span {
+  padding: 8px 10px;
+  border: 2px solid var(--black);
+  border-radius: 20px;
+  background: var(--pink);
+  font: 10px "DM Mono", monospace;
+}
+
+/* PORTFOLIO */
+
+.works {
+  background: var(--blue);
+}
+
+.works h2 {
+  margin-top: 45px;
+  font-size: clamp(55px, 9vw, 110px);
+  letter-spacing: -.09em;
+  color: var(--yellow);
+  text-shadow: 4px 4px var(--black);
+}
+
+.works h2 span {
+  color: var(--pink);
+}
+
+.description {
+  margin: 15px 0 35px;
+  font: 10px "DM Mono", monospace;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px 25px;
+}
+
+.project-art {
+  position: relative;
+  min-height: 390px;
+  padding: 20px;
+  overflow: hidden;
+  border: 3px solid var(--black);
+  box-shadow: 7px 8px var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-art small {
+  z-index: 2;
+  width: fit-content;
+  padding: 7px 9px;
+  border: 2px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  font: 10px "DM Mono", monospace;
+}
+
+.project-art h3 {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(40px, 6vw, 75px);
+  line-height: .85;
+  letter-spacing: -.09em;
+  text-shadow: 4px 4px var(--white),
+               6px 6px var(--black);
+  margin: auto 0;
+}
+
+.art-one {
+  background: linear-gradient(140deg, #a8baff, #294cff, #18219b);
+  color: var(--yellow);
+}
+
+.art-one::before {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 70%;
+  top: 15%;
+  left: 12%;
+  border: 5px solid var(--yellow);
+  border-radius: 50%;
+  transform: rotate(25deg);
+}
+
+.art-two {
+  background: linear-gradient(140deg, #ffd4f1, var(--pink));
+  color: var(--blue);
+}
+
+.art-three {
+  background: linear-gradient(140deg, #fffca1, var(--yellow));
+  color: var(--blue);
+}
+
+.art-four {
+  background: repeating-linear-gradient(
+    -5deg, #fffdf3, #fffdf3 6px,
+    #cdd6ff 7px, #cdd6ff 8px
+  );
+  color: var(--blue);
+}
+
+.smiley {
+  position: absolute;
+  right: 8%;
+  top: 25%;
+  color: var(--yellow);
+  -webkit-text-stroke: 3px var(--black);
+  font-size: 100px;
+}
+
+.star-art {
+  position: absolute;
+  right: 10%;
+  top: 22%;
+  color: var(--pink);
+  -webkit-text-stroke: 3px var(--black);
+  font-size: 100px;
+}
+
+.circle-art {
+  position: absolute;
+  right: 8%;
+  top: 25%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 95px;
+  height: 95px;
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  background: var(--pink);
+  color: var(--black);
+  font-size: 11px;
+  font-weight: bold;
+  transform: rotate(10deg);
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.project-info h4 {
+  font-size: 14px;
+}
+
+.project-info span {
+  font: 10px "DM Mono", monospace;
+}
+
+/* QUOTE */
+
+.quote {
+  position: relative;
+  overflow: hidden;
+  padding: 75px 7%;
+  background: var(--pink);
+  color: var(--black);
+  border-block: 4px solid var(--black);
+}
+
+.quote p {
+  font: 11px "DM Mono", monospace;
+  margin-bottom: 30px;
+}
+
+.quote h2 {
+  font-size: clamp(55px, 10vw, 120px);
+  line-height: .85;
+  letter-spacing: -.09em;
+  text-shadow: 4px 4px var(--white),
+               7px 7px var(--black);
+}
+
+.quote h2 span {
+  color: var(--blue);
+}
+
+/* CONTACT */
+
+.contact {
+  background: var(--blue);
+}
+
+.contact-label {
+  display: inline-block;
+  padding: 9px 12px;
+  margin-top: 45px;
+  background: var(--yellow);
+  color: var(--black);
+  border: 2px solid var(--black);
+  font: 10px "DM Mono", monospace;
+  transform: rotate(-2deg);
+}
+
+.contact h2 {
+  margin: 35px 0 50px;
+  font-size: clamp(55px, 11vw, 135px);
+  line-height: .83;
+  letter-spacing: -.09em;
+  color: var(--yellow);
+  text-shadow: 5px 6px var(--black);
+}
+
+.contact h2 span {
+  color: var(--pink);
+}
+
+.contact-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  border-top: 2px solid var(--white);
+  padding-top: 25px;
+}
+
+.contact-bottom p {
+  max-width: 300px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-links a {
+  padding: 12px 15px;
+  border: 2px solid var(--black);
+  background: var(--yellow);
+  color: var(--black);
+  box-shadow: 4px 4px var(--black);
+  font: 700 11px "DM Mono", monospace;
+}
+
+.contact-links a:hover {
+  background: var(--pink);
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px 5%;
+  background: var(--yellow);
+  color: var(--black);
+  border-top: 3px solid var(--black);
+  font: 10px "DM Mono", monospace;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  header {
+    min-height: 65px;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    padding: 20px 6%;
+    flex-direction: column;
+    background: var(--white);
+    border-bottom: 3px solid var(--black);
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 78vh;
+    padding: 30px 6%;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 15vw, 95px);
+    margin: 80px 0;
+  }
+
+  .sticker-one {
+    width: 75px;
+    height: 75px;
+    font-size: 10px;
+    right: 6%;
+  }
+
+  .sticker-two {
+    width: 65px;
+    height: 65px;
+    font-size: 9px;
+    bottom: 28%;
+  }
+
+  section.content {
+    padding: 45px 6%;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-art {
+    min-height: 360px;
+  }
+
+  .project-art h3 {
+    font-size: 65px;
+  }
+
+  .project-info {
+    flex-direction: column;
+  }
+
+  .contact-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .quote {
+    padding: 60px 6%;
+  }
+
+  footer {
+    font-size: 9px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  @RADITYAPRAKOSO &nbsp; ✦ &nbsp;
+  CREATIVE PORTFOLIO &nbsp; ✦ &nbsp;
+  @RADITYAPRAKOSO &nbsp; ✦ &nbsp;
+  DESIGN ARCHIVE &nbsp; ✦ &nbsp;
+  @RADITYAPRAKOSO
+</div>
+
+<header>
+  <a class="logo" href="#home">RP®</a>
+  <button class="menu" id="menuBtn">MENU ☰</button>
+
+  <nav id="navigation">
+    <a href="#about">ABOUT</a>
+    <a href="#work">MY WORK</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="cloud cloud-one"></div>
+  <div class="cloud cloud-two"></div>
+  <div class="hill"></div>
+  <div class="hill hill-two"></div>
+
+  <div class="hero-label">CREATIVE PORTFOLIO / 2026</div>
+
+  <h1>
+    RADITYA
+    <span>PRAKOSO</span>
+  </h1>
+
+  <div class="sticker sticker-one">
+    CREATIVE<br>SPACE ✦
+  </div>
+
+  <div class="sticker sticker-two">
+    DESIGN<br>ARCHIVE
+  </div>
+
+  <div class="star star-one">★</div>
+  <div class="star star-two">✦</div>
+
+  <div class="hero-bottom">
+    <p>
+      GRAPHIC DESIGN<br>
+      VISUAL EXPERIMENTS<br>
+      INDONESIA
+    </p>
+
+    <a class="scroll" href="#work">↓</a>
+  </div>
+</section>
+
+<section class="about content" id="about">
+  <div class="section-label">
+    <span>01 / ABOUT ME</span>
+    <span>WHO AM I?</span>
+  </div>
+
+  <div class="about-grid">
+    <h2>
+      JUST A KID<br>
+      WITH A<br>
+      <span>DESIGN</span><br>
+      OBSESSION.
+    </h2>
+
+    <div class="about-text">
+      <h3>Halo, gue Raditya!</h3>
+
+      <p>
+        Gue seorang pelajar yang tertarik dengan dunia
+        desain grafis, tipografi, poster, dan visual digital.
+        Gue suka bereksperimen dengan warna, bentuk,
+        dan komposisi untuk menciptakan desain yang
+        punya karakter sendiri.
+      </p>
+
+      <p>
+        Website ini menjadi tempat untuk menampilkan karya,
+        menyimpan eksperimen visual, dan terus berkembang
+        sebagai seorang desainer.
+      </p>
+
+      <div class="skills">
+        <span>GRAPHIC DESIGN</span>
+        <span>POSTER DESIGN</span>
+        <span>CONTENT DESIGN</span>
+        <span>PHOTO EDITING</span>
+        <span>VIDEO EDITING</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="works content" id="work">
+  <div class="section-label">
+    <span>02 / SELECTED WORKS</span>
+    <span>MY CREATIVE SPACE</span>
+  </div>
+
+  <h2>MY WORKS <span>✳</span></h2>
+
+  <p class="description">
+    A COLLECTION OF DESIGNS, IDEAS, AND EXPERIMENTS.
+  </p>
+
+  <div class="gallery">
+
+    <article>
+      <div class="project-art art-one">
+        <small>POSTER / 001</small>
+        <h3>BREAK<br>THE<br>RULES.</h3>
+        <small>THINK DIFFERENTLY ✦</small>
+      </div>
+      <div class="project-info">
+        <h4>01. Break The Rules</h4>
+        <span>POSTER DESIGN</span>
+      </div>
+    </article>
+
+    <article>
+      <div class="project-art art-two">
+        <small>DIGITAL / 002</small>
+        <h3>GOOD<br>VIBES<br>ONLY!</h3>
+        <div class="smiley">☺</div>
+        <small>A LITTLE BIT OF CHAOS</small>
+      </div>
+      <div class="project-info">
+        <h4>02. Good Vibes Only</h4>
+        <span>DIGITAL ART</span>
+      </div>
+    </article>
+
+    <article>
+      <div class="project-art art-three">
+        <small>EDITORIAL / 003</small>
+        <h3>NO<br>STATIC<br>IDEAS.</h3>
+        <div class="star-art">★</div>
+        <small>CREATE YOUR OWN WORLD</small>
+      </div>
+      <div class="project-info">
+        <h4>03. No Static Ideas</h4>
+        <span>EDITORIAL DESIGN</span>
+      </div>
+    </article>
+
+    <article>
+      <div class="project-art art-four">
+        <small>EXPERIMENT / 004</small>
+        <h3>CUT.<br>PASTE.<br>REPEAT.</h3>
+        <div class="circle-art">MADE<br>WITH<br>LOVE ✳</div>
+        <small>PERSONAL EXPERIMENT</small>
+      </div>
+      <div class="project-info">
+        <h4>04. Cut, Paste, Repeat</h4>
+        <span>VISUAL EXPERIMENT</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="quote">
+  <p>MY PERSONAL REMINDER / 001</p>
+  <h2>
+    KEEP<br>
+    CREATING<span>.</span><br>
+    KEEP<br>
+    EVOLVING<span>.</span>
+  </h2>
+</section>
+
+<section class="contact content" id="contact">
+  <div class="section-label">
+    <span>03 / CONTACT</span>
+    <span>LET'S CONNECT</span>
+  </div>
+
+  <div class="contact-label">HAVE AN IDEA? LET'S TALK.</div>
+
+  <h2>
+    LET'S MAKE<br>
+    <span>SOMETHING</span><br>
+    COOL!
+  </h2>
+
+  <div class="contact-bottom">
+    <p>
+      Thanks for visiting my creative space.
+      Feel free to connect with me!
+    </p>
+
+    <div class="contact-links">
+      <a href="https://instagram.com/Raditya35p"
+         target="_blank" rel="noreferrer">
+        INSTAGRAM ↗
+      </a>
+
+      <a href="mailto:emailkamu@example.com">
+        EMAIL ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>© 2026 RADITYA PRAKOSO</span>
+  <span>MADE WITH CREATIVITY ✳</span>
+  <a href="#home">BACK TO TOP ↑</a>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navigation = document.getElementById("navigation");
+
+menuBtn.addEventListener("click", function () {
+  const isOpen = navigation.classList.toggle("open");
+
+  menuBtn.textContent = isOpen ? "TUTUP ✕" : "MENU ☰";
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+});
+
+navigation.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navigation.classList.remove("open");
+    menuBtn.textContent = "MENU ☰";
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+</script>
+
+</body>
+</html>
+```
